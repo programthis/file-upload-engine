@@ -29,9 +29,11 @@
 	}
 	a {
 		@include animation-transition(0.1s);
+		@include border-box;
 		text-decoration: none;
 		display: inline-block;
 		width: 100%;
+		padding: 0 5px;
 		&:hover {
 			background-color: silver;
 		}
