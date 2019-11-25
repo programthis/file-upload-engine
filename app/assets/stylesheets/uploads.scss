@@ -155,21 +155,6 @@
 			}
 		}
 	}
-	.urlContainer {
-		margin-bottom: 10px;
-		.copyEventUrl {
-			cursor: pointer;
-			font-weight: 600;
-			margin-top: 10px;
-		}
-		.copyMessage {
-			display: none;
-			font-style: italic;
-			&.active {
-				display: block;
-			}
-		}
-	}
 }
 
 .detailsContainer {
