@@ -40,7 +40,6 @@ footer {
 .mainContainer {
 	width: 70%;
 	margin: 0 auto;
-	text-align: right;
 	form {
 		margin-bottom: 10px;
 		text-align: left;
@@ -48,10 +47,6 @@ footer {
 			.field {
 				margin-bottom: 10px;
 			}
-		}
-		&.searchForm {
-			margin-left: auto;
-			width: 30%;
 		}
 		input {
 			@include border-box;

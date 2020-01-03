@@ -52,6 +52,13 @@
 		font-style: italic;
 		margin-bottom: 5px;
 	}
+	.searchForm {
+		input {
+			@include border-box;
+			font-size: 16px;
+			padding: 10px;
+		}
+	}
 }
 
 @media all and (max-width: 780px) {
