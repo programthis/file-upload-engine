@@ -33,13 +33,6 @@
 				}
 			}	
 		}
-		.imageContainer {
-			background: linear-gradient($primary-orange, $primary-orange);
-			img {
-				opacity: 0.5;
-				
-			}
-		}
 	}
 	&.active {
 		.imageContainer {
@@ -47,6 +40,17 @@
 			img {
 				opacity: 0.5;
 				
+			}
+		}
+	}
+	&.index {
+		&:hover {
+			.imageContainer {
+				background: linear-gradient($primary-orange, $primary-orange);
+				img {
+					opacity: 0.5;
+					
+				}
 			}
 		}
 	}
