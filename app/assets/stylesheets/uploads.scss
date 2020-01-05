@@ -119,7 +119,23 @@
 		}
 	}
 }
-
+.newUploadContainer {
+	@include border-box;
+	display: inline-block;
+	vertical-align: top;
+	width: 175px;
+	height: 175px;
+	text-decoration: none;
+	background-color: silver;
+	&:hover {
+		border: 5px solid $primary-black;
+	}
+	.newUploadInnerContent {
+		@include flex-box-all-centre;
+		height: 100%;
+		font-size: 30px;
+	}
+}
 .showContainer {
 	text-align: right;
 	.removeContainer {

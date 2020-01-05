@@ -13,6 +13,16 @@
 	align-items: center;
 }
 
+@mixin flex-box-all-centre {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 @mixin animation-transition($speed) {
 	-webkit-transition: all $speed ease; /* Safari and Chrome */
 	-moz-transition: all $speed ease; /* Firefox */
