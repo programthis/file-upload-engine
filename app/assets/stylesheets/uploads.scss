@@ -53,6 +53,15 @@
 				}
 			}
 		}
+		&.active {
+			.imageContainer {
+				background: linear-gradient($primary-green, $primary-green);
+				img {
+					opacity: 0.5;
+					
+				}
+			}
+		}
 	}
 	.fileContainerInner {
 		display: inline-block;
