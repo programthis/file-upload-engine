@@ -33,6 +33,13 @@
 				}
 			}	
 		}
+		.imageContainer {
+			background: linear-gradient(#d0d0d0, $primary-orange);
+			img {
+				opacity: 0.5;
+				
+			}
+		}
 	}
 	&.active {
 		.imageContainer {
