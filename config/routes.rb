@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 			resources :settings do
 				member do
 				  get :toggle_user_admin
+				  get :delete_tag
 				end
 			end
 			resources :tags

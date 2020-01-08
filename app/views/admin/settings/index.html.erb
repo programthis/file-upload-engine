@@ -1,58 +1,87 @@
-<h2>Image Sizing Management</h2>
-<%= form_for @setting, url: admin_setting_path(@setting) do |form| %>
-    <% if @setting.errors.any? %>
-        <div id="error_explanation">
-            <h2>
-                <%= pluralize(@setting.errors.count, "error") %> prohibited
-                the settings from being saved:
-            </h2>
-            <ul>
-                <% @setting.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                <% end %>
-            </ul>
-        </div>
+<div class="adminContainer">
+    <h2>Image Sizing Management</h2>
+    <%= form_for @setting, url: admin_setting_path(@setting) do |form| %>
+        <% if @setting.errors.any? %>
+            <div id="error_explanation">
+                <h2>
+                    <%= pluralize(@setting.errors.count, "error") %> prohibited
+                    the settings from being saved:
+                </h2>
+                <ul>
+                    <% @setting.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        
+        <p>
+            <%= form.label :large_image %><br>
+            <%= form.number_field :large_image %>
+        </p>
+        
+        <p>
+            <%= form.label :medium_image %><br>
+            <%= form.number_field :medium_image %>
+        </p>
+
+        <p>
+            <%= form.label :small_image %><br>
+            <%= form.number_field :small_image %>
+        </p>
+        
+        <p>
+            <%= form.submit "Update settings" %>
+        </p>
     <% end %>
-    
-    <p>
-        <%= form.label :large_image %><br>
-        <%= form.number_field :large_image %>
-    </p>
-    
-    <p>
-        <%= form.label :medium_image %><br>
-        <%= form.number_field :medium_image %>
-    </p>
-
-    <p>
-        <%= form.label :small_image %><br>
-        <%= form.number_field :small_image %>
-    </p>
-    
-    <p>
-        <%= form.submit "Update settings" %>
-    </p>
-<% end %>
-
-<h2>User Management</h2>
-<table>
-    <tr>
-        <th>
-            User
-        </th>
-        <th>
-            Admin
-        </th>
-    </tr>
-    <% @users.each do |user| %>
+</div>
+<div class="adminContainer">
+    <h2>User Management</h2>
+    <table>
         <tr>
-            <td>
-                <%= user.email %>
-            </td>
-            <td>
-                <%= user.admin %>
-                <%= link_to "Toggle", toggle_user_admin_admin_setting_path(user) %>
-            </td>
+            <th>
+                User
+            </th>
+            <th>
+                Admin
+            </th>
         </tr>
-    <% end %>
-</table>
+        <% @users.each do |user| %>
+            <tr>
+                <td>
+                    <%= user.email %>
+                </td>
+                <td class="toggle">
+                    <% if user.admin %>
+                        <%= link_to "Disable admin", toggle_user_admin_admin_setting_path(user) %>
+                    <% else %>
+                        <%= link_to "Enable admin", toggle_user_admin_admin_setting_path(user) %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+</div>
+<div class="adminContainer">
+    <h2>Tag Management</h2>
+    <table>
+        <tr>
+            <th>
+                Tag
+            </th>
+            <th>
+                Delete
+            </th>
+        </tr>
+        <% @admin_tags.each do |tag| %>
+            <tr>
+                <td>
+                    <%= tag.name %>
+                </td>
+                <td class="toggle">
+                    <%= link_to "Delete", delete_tag_admin_setting_path(tag) %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+</div>

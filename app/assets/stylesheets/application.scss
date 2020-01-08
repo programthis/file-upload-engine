@@ -91,6 +91,31 @@ footer {
 	}
 }
 
+table {
+	background-color: white;
+	border-collapse: collapse;
+	tr {
+		th, td {
+			padding: 10px;
+			border: 1px solid $primary-black;
+			&.toggle {
+				&:hover {
+					background-color: $primary-grey;
+				}
+				a {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
+.adminContainer {
+	margin-bottom: 20px;
+	h2 {
+		margin-bottom: 10px;
+	}
+}
+
 @media all and (max-width: 780px) {
 	.mainContainer {
 		width: 90%;

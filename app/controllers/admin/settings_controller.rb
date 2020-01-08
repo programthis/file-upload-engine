@@ -9,6 +9,7 @@ class Admin::SettingsController < ApplicationController
 	def index
 		@setting = Setting.find(1)
 		@users = User.all.order('email ASC')
+		@admin_tags = ActsAsTaggableOn::Tag.most_used
 	end
 
 	def create
@@ -41,6 +42,12 @@ class Admin::SettingsController < ApplicationController
 		else
 			render "edit"
 		end
+	end
+
+	def delete_tag
+		tag = ActsAsTaggableOn::Tag.find(params[:id])
+		tag.destroy
+		redirect_to admin_settings_path
 	end
 
 	private
