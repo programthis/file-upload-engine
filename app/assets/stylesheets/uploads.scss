@@ -15,7 +15,7 @@
 		.downloadContainer {
 			&:hover {
 				img {
-					background-color: #5a86da;
+					background-color: $primary-blue;
 				}
 			}
 		}
@@ -165,15 +165,13 @@
 		.imageContainer, .iconContainer {
 			position: relative;
 			&:hover {
-				.externalLink {
+				.imageIcon {
 					display: block;
 				}
 			}
-			.externalLink {
+			.imageIcon {
 				display: none;
 				position: absolute;
-				top: 0;
-				right: 0;
 				padding: 5px;
 				img {
 					width: 20px;
@@ -181,6 +179,24 @@
 					background-color: $primary-white;
 					padding: 2px;
 					object-fit: cover;
+				}
+			}
+			.externalLink {
+				top: 0;
+				right: 0;
+				&:hover {
+					img {
+						background-color: $primary-blue;
+					}
+				}
+			}
+			.delete {
+				top: 0;
+				left: 0;
+				&:hover {
+					img {
+						background-color: $primary-red;
+					}
 				}
 			}
 			.fileSize {

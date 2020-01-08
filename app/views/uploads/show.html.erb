@@ -1,18 +1,17 @@
 <% @upload.files.each do |file| %>
 	<div class="showContainer">
-		<% if is_owner(@upload) || current_user.admin? %>
-			<div class="removeContainer">
-				<%= link_to 'Remove', delete_image_attachment_upload_url(id: file.id, upload_id: @upload.id),
-		            method: :delete,
-		            data: { confirm: 'Are you sure you wish to delete this?' } %>
-			</div>
-		<% end %>
 		<div class="fileContainer" title="Filename: <%= file.filename %>">
 			<% if is_image(file) %>
 				<div class="originalImageContainer">
 					<div class="imageContainer">
 						<%= image_tag(file, alt: file.filename)  %>
-						<div class="externalLink" title="Open source file">
+						<% if is_owner(@upload) || current_user.admin? %>
+							<div class="delete imageIcon" title="Delete file">
+								<%= link_to image_tag("trash_icon.svg"), delete_image_attachment_upload_url(id: file.id, upload_id: file.record.id), method: :delete,
+								                data: { confirm: 'Are you sure you wish to delete this?' }, title: "Delete file" %>
+							</div>
+						<% end %>
+						<div class="externalLink imageIcon" title="Open source file">
 							<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_blob_path(file, only_path: true), target: :_blank %>
 						</div>
 					</div>
@@ -25,7 +24,7 @@
 					<div class="fileSize" title="Image has been resized to a maximum width and/or height of #{@setting.large_image}px">
 						<%= @setting.large_image %>px
 					</div>
-					<div class="externalLink" title="Open source file">
+					<div class="externalLink imageIcon" title="Open source file">
 						<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_representation_url(file.variant(resize: large_image_resize(@setting)), Rails.application.config.action_mailer.default_url_options), target: :_blank %>
 					</div>
 				</div>
@@ -34,7 +33,7 @@
 					<div class="fileSize" title="Image has been resized to a maximum width and/or height of #{@setting.medium_image}px">
 						<%= @setting.medium_image %>px
 					</div>
-					<div class="externalLink" title="Open source file">
+					<div class="externalLink imageIcon" title="Open source file">
 						<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_representation_url(file.variant(resize: medium_image_resize(@setting)), Rails.application.config.action_mailer.default_url_options), target: :_blank %>
 					</div>
 				</div>
@@ -43,7 +42,7 @@
 					<div class="fileSize" title="Image has been resized to a maximum width and/or height of #{@setting.small_image}px">
 						<%= @setting.small_image %>px
 					</div>
-					<div class="externalLink" title="Open source file">
+					<div class="externalLink imageIcon" title="Open source file">
 						<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_representation_url(file.variant(resize: small_image_resize(@setting)), Rails.application.config.action_mailer.default_url_options), target: :_blank %>
 					</div>
 				</div>
@@ -54,14 +53,14 @@
 			<% elsif is_pdf(file) %>
 				<div class="iconContainer">
 					<%= image_tag("pdf_icon.svg") %>
-					<div class="externalLink" title="Open source file">
+					<div class="externalLink imageIcon" title="Open source file">
 						<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_blob_path(@file, only_path: true), target: :_blank %>
 					</div>
 				</div>
 			<% elsif is_code(@file) %>
 				<div class="iconContainer">
 					<%= image_tag("code_icon.svg") %>
-					<div class="externalLink" title="Open source file">
+					<div class="externalLink imageIcon" title="Open source file">
 						<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_blob_path(@file, only_path: true), target: :_blank %>
 					</div>
 				</div>
