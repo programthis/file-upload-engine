@@ -30,11 +30,9 @@ Rails.application.routes.draw do
 		end
 	end
 
-	constraints subdomain: 'api' do
-		namespace :api, defaults: {format: 'json'} do
-			namespace :v1 do
-				resources :uploads
-			end
+	namespace :api, defaults: {format: 'json'} do
+		namespace :v1 do
+			resources :uploads
 		end
 	end
 end
