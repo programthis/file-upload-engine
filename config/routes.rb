@@ -29,4 +29,12 @@ Rails.application.routes.draw do
 			put 'update_avatar', to: 'users/registrations#update_avatar'
 		end
 	end
+
+	constraints subdomain: 'api' do
+		namespace :api, defaults: {format: 'json'} do
+			namespace :v1 do
+				resources :uploads
+			end
+		end
+	end
 end

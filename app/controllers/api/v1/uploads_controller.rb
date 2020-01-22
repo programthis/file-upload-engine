@@ -1,0 +1,16 @@
+module Api::V1
+    class UploadsController < ApiController
+      before_action :set_upload, only: [:show]
+
+      respond_to :json
+
+      def show
+      end
+
+      private
+
+      def set_upload
+        @upload = Upload.find(params[:id])
+      end
+    end
+end
