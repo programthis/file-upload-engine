@@ -10,7 +10,7 @@ module Api::V1
       private
 
       def set_upload
-        @upload = Upload.find(params[:id])
+        render json: {monkey: "I am a creature of the branches", giraffe: "I am a creature of the trees"}
       end
     end
 end
