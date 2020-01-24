@@ -2,9 +2,17 @@ module Api::V1
     class UploadsController < ApiController
       before_action :set_upload, only: [:show]
 
-      respond_to :json
-
       def show
+      end
+
+      def destroy
+        attachment = ActiveStorage::Attachment.find(params[:id])
+        attachment.purge # or use purge_later
+        upload = Upload.find(params[:upload_id])
+        if (upload.files.length <= 0)
+            upload.destroy
+        end
+        render json: {deleted_me: "Yes you did"}
       end
 
       private
