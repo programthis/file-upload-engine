@@ -12,7 +12,7 @@ module Api::V1
         if (upload.files.length <= 0)
             upload.destroy
         end
-        render json: {deleted_me: "Yes you did"}
+        render json: {status: "File successfully deleted"}
       end
 
       private
