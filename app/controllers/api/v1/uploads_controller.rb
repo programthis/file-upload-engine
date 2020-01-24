@@ -6,13 +6,17 @@ module Api::V1
       end
 
       def destroy
-        attachment = ActiveStorage::Attachment.find(params[:id])
+        attachment = ActiveStorage::Attachment.find(params[:file_id])
         attachment.purge # or use purge_later
-        upload = Upload.find(params[:upload_id])
+        upload = Upload.find(params[:id])
         if (upload.files.length <= 0)
             upload.destroy
         end
         render json: {status: "File successfully deleted"}
+      end
+
+      def delete_multiple_images
+
       end
 
       private

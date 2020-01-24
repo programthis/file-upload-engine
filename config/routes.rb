@@ -32,7 +32,11 @@ Rails.application.routes.draw do
 
 	namespace :api, defaults: {format: 'json'} do
 		namespace :v1 do
-			resources :uploads
+			resources :uploads do
+				member do
+					delete :delete_multiple_images
+				end
+			end
 		end
 	end
 end
