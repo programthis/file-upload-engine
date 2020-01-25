@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 		namespace :v1 do
 			resources :uploads do
 				member do
-					delete :delete_multiple_images
+					delete :delete_multiple_files
 				end
 			end
 		end
