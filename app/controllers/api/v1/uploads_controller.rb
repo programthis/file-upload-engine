@@ -5,6 +5,18 @@ module Api::V1
         def show
         end
 
+        def create
+            # TO DO - partially complete
+            # need to investigate if the below is working
+
+            @upload = Upload.new(upload_params)
+            if @upload.save
+                render json: {status: "Upload successful!"}
+            else 
+                render json: { error: "Error making upload :(" }
+            end
+        end
+
         def destroy
             attachment = ActiveStorage::Attachment.find(params[:file_id])
             attachment.purge
@@ -28,6 +40,10 @@ module Api::V1
 
         def set_upload
             render json: {monkey: "I am a creature of the branches", giraffe: "I am a creature of the trees"}
+        end
+
+        def upload_params
+            params.require(:upload).permit(files: [])
         end
     end
 end
