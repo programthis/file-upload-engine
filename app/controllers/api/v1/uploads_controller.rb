@@ -6,10 +6,7 @@ module Api::V1
         end
 
         def create
-            # TO DO - partially complete
-            # need to investigate if the below is working
-
-            @upload = Upload.new(upload_params)
+            @upload = Upload.new(files: [params[:files]], user: current_user)
             if @upload.save
                 render json: {status: "Upload successful!"}
             else 
@@ -43,7 +40,7 @@ module Api::V1
         end
 
         def upload_params
-            params.require(:upload).permit(files: [])
+            params.require(:upload).permit(files: []).merge(user: current_user)
         end
     end
 end
