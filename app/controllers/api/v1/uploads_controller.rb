@@ -8,6 +8,7 @@ module Api::V1
         def create
             @upload = Upload.new(files: [params[:files]], user: current_user)
             if @upload.save
+                # TO DO create body of information to send back in the response
                 render json: {status: "Upload successful!"}
             else 
                 render json: { error: "Error making upload :(" }
