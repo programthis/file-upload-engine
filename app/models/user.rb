@@ -5,7 +5,7 @@ class User < ApplicationRecord
 	       :recoverable, :rememberable, :validatable, :confirmable
 	has_many :uploads
 	has_one_attached :avatar
-	validates_uniqueness_of :username
+	validates_uniqueness_of :username, :email
 
 	before_save :ensure_authentication_token
 
