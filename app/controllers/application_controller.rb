@@ -2,10 +2,6 @@ class ApplicationController < ActionController::Base
 	before_action :set_tags
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
-	# TO DO*********************
-	# remember to remove the below
-	protect_from_forgery unless: -> { request.format.json? }
-
 	def set_tags
 		@tags = ActsAsTaggableOn::Tag.most_used(10)
 		if current_user
