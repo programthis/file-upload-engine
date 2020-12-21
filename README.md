@@ -28,5 +28,8 @@ If you are on a mac, installing postgres should be relatively easy. If postgres 
 On linux, the process is a bit more involved:     
 `sudo apt-get install postgresql`
 
-Starting the server on linux:     
+Stopping the server on linux:
+`sudo /etc/init.d/postgresql stop`
+
+Starting the server on linux:
 `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start`
