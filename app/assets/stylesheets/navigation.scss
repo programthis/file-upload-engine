@@ -20,6 +20,9 @@ nav {
 			margin: 0 10px;
 			font-size: 18px;
 			text-decoration: none;
+			&.newUpload {
+				font-size: 30px;
+			}
 		}
 		img {
 			width: 20px;
