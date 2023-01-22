@@ -67,7 +67,7 @@
 		display: inline-block;
 	}
 	.originalImageContainer {
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		.imageContainer {
 			width: 450px;
 			img {
@@ -157,7 +157,6 @@
 	}
 }
 .showContainer {
-	text-align: right;
 	.removeContainer {
 		margin-bottom: 10px;
 	}
@@ -213,8 +212,7 @@
 }
 
 .detailsContainer {
-	margin-top: 10px;
-	text-align: right;
+	padding-left: 10px;
 	.edit_upload {
 		display: none;
 		width: 20%;
