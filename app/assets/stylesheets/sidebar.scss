@@ -4,7 +4,7 @@
 .sidebar {
 	@include animation-transition(0.1s);
 	@include border-box;
-	width: 12%;
+	width: 20%;
 	height: 100vh;
 	padding: 0 0 20px 20px;
 	position: fixed;
@@ -37,6 +37,9 @@
 		padding: 0 5px;
 		&:hover {
 			background-color: silver;
+		}
+		&.tag {
+			padding: 5px;
 		}
 	}
 	.main {
