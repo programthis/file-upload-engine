@@ -13,7 +13,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'devise'
-gem 'acts-as-taggable-on', '~> 5.0'
+gem 'acts-as-taggable-on'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -52,7 +52,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  # gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do

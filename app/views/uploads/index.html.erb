@@ -4,7 +4,7 @@
 			<%= link_to(single_upload_path(file.record, file_id: file), class: "fileContainerInner") do %>
 				<% if is_image(file) %>
 					<div class="imageContainer">
-						<%= image_tag(file, alt: file.filename)  %>
+						<%= image_tag file.variant(resize_to_limit: [300, 300]) %>
 					</div>
 				<% elsif is_video(file) %>
 					<div class="imageContainer">

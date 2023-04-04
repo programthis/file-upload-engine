@@ -38,8 +38,8 @@ footer {
 }
 
 .mainContainer {
-	width: 70%;
-	margin: 0 auto;
+	width: 80%;
+	margin-left: 20%;
 	form {
 		margin-bottom: 10px;
 		text-align: left;
@@ -118,7 +118,8 @@ table {
 
 @media all and (max-width: 780px) {
 	.mainContainer {
-		width: 90%;
+		width: 100%;
 		text-align: center;
+		margin-left: 0;
 	}
 }

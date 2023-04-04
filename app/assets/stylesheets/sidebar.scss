@@ -3,7 +3,8 @@
 
 .sidebar {
 	@include animation-transition(0.1s);
-	width: 12%;
+	@include border-box;
+	width: 20%;
 	height: 100vh;
 	padding: 0 0 20px 20px;
 	position: fixed;
@@ -25,7 +26,7 @@
 		}
 	}
 	&.inactive {
-		left: -12%;
+		left: -20%;
 	}
 	a {
 		@include animation-transition(0.1s);
@@ -36,6 +37,9 @@
 		padding: 0 5px;
 		&:hover {
 			background-color: silver;
+		}
+		&.tag {
+			padding: 5px;
 		}
 	}
 	.main {
@@ -57,6 +61,7 @@
 			@include border-box;
 			font-size: 16px;
 			padding: 10px;
+			width: 90%;
 		}
 	}
 }

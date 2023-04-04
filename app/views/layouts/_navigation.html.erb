@@ -1,7 +1,7 @@
 <nav>
 	<div class="navbarContents">
 		<% if current_user %>
-			<%= link_to('+', new_upload_path) %>
+			<%= link_to('+', new_upload_path, class: "newUpload") %>
 			<%= link_to('My Uploads', uploads_path(user: current_user.username)) %>
 			<label for="avatarUpload" title="Click to change your avatar">
 				<% if current_user.avatar.attached? %>
