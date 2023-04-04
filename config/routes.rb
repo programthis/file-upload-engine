@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 		  end
 		end
 		resources :tags
-		root 'uploads#new'
+		root 'uploads#index'
 
 		namespace :admin do
 			resources :settings do
