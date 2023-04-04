@@ -4,6 +4,9 @@
 nav {
 	@include flex-box;
 	padding: 20px;
+	.navbarLogo {
+		text-decoration: none;
+	}
 	.navbarContents {
 		@include flex-box;
 		margin-left: auto;
@@ -33,6 +36,11 @@ nav {
 	.navbarMobile {
 		display: none;
 		width: 100%;
+		.mobileNavbarLogo {
+			text-align: center;
+			padding: 10px;
+			font-size: 20px;
+		}
 		.navbarMobileLinks {
 			display: none;
 			&.active {
@@ -91,6 +99,9 @@ nav {
 @media all and (max-width: 780px) {
 	nav {
 		padding: 0;
+		.navbarLogo {
+			display: none;
+		}
 		.navbarContents {
 			display: none;
 		}

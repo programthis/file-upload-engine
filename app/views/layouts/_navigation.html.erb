@@ -1,4 +1,7 @@
 <nav>
+	<%= link_to root_path, class: "navbarLogo" do %>
+		File Upload Engine
+	<% end %>
 	<div class="navbarContents">
 		<% if current_user %>
 			<%= link_to('+', new_upload_path, class: "newUpload") %>
@@ -24,6 +27,9 @@
 		<% end %>
 	</div>
 	<div class="navbarMobile">
+		<div class="mobileNavbarLogo">
+			File Upload Engine
+		</div>
 		<button class="hamburger hamburger--3dx" type="button">
 			<span class="hamburger-box">
 				<span class="hamburger-inner"></span>
