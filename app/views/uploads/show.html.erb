@@ -1,58 +1,60 @@
-<% @upload.files.each do |file| %>
-	<div class="showContainer">
-		<div class="fileContainer" title="Filename: <%= file.filename %>">
-			<% if is_image(file) %>
-				<div class="originalImageContainer">
-					<div class="imageContainer">
-						<%= image_tag(file, alt: file.filename)  %>
-						<% if is_owner(@upload) || current_user.admin? %>
-							<div class="delete imageIcon" title="Delete file">
-								<%= link_to image_tag("trash_icon.svg"), delete_image_attachment_upload_url(id: file.id, upload_id: file.record.id), method: :delete,
-								                data: { confirm: 'Are you sure you wish to delete this?' }, title: "Delete file" %>
+<div class="uploadsContainer">
+	<% @upload.files.each do |file| %>
+		<div class="showContainer">
+			<div class="fileContainer" title="Filename: <%= file.filename %>">
+				<% if is_image(file) %>
+					<div class="originalImageContainer">
+						<div class="imageContainer">
+							<%= image_tag(file, alt: file.filename)  %>
+							<% if is_owner(@upload) || current_user.admin? %>
+								<div class="delete imageIcon" title="Delete file">
+									<%= link_to image_tag("trash_icon.svg"), delete_image_attachment_upload_url(id: file.id, upload_id: file.record.id), method: :delete,
+									                data: { confirm: 'Are you sure you wish to delete this?' }, title: "Delete file" %>
+								</div>
+							<% end %>
+							<div class="externalLink imageIcon" title="Open source file">
+								<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_blob_path(file, only_path: true), target: :_blank %>
 							</div>
-						<% end %>
-						<div class="externalLink imageIcon" title="Open source file">
-							<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_blob_path(file, only_path: true), target: :_blank %>
 						</div>
 					</div>
-				</div>
-			<% elsif is_video(file) %>
-				<div class="videoContainer">
-					<%= video_tag rails_blob_path(file), controls: true %>
-				</div>
-			<% elsif is_pdf(file) %>
-				<div class="iconContainer">
-					<%= image_tag("pdf_icon.svg") %>
-					<div class="externalLink imageIcon" title="Open source file">
-						<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_blob_path(@file, only_path: true), target: :_blank %>
+				<% elsif is_video(file) %>
+					<div class="videoContainer">
+						<%= video_tag rails_blob_path(file), controls: true %>
 					</div>
-				</div>
-			<% elsif is_code(@file) %>
-				<div class="iconContainer">
-					<%= image_tag("code_icon.svg") %>
-					<div class="externalLink imageIcon" title="Open source file">
-						<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_blob_path(@file, only_path: true), target: :_blank %>
+				<% elsif is_pdf(file) %>
+					<div class="iconContainer">
+						<%= image_tag("pdf_icon.svg") %>
+						<div class="externalLink imageIcon" title="Open source file">
+							<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_blob_path(@file, only_path: true), target: :_blank %>
+						</div>
 					</div>
-				</div>
+				<% elsif is_code(@file) %>
+					<div class="iconContainer">
+						<%= image_tag("code_icon.svg") %>
+						<div class="externalLink imageIcon" title="Open source file">
+							<%= link_to image_tag("external_link_icon.svg"), Rails.application.routes.url_helpers.rails_blob_path(@file, only_path: true), target: :_blank %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	<div class="detailsContainer">
+		<div>
+			Uploaded by: <%= link_to @upload.user.username, uploads_path(user: @upload.user.username), title: "Go to #{@upload.user.username}'s uploads" %>
+		</div>
+		<div>
+			Uploaded on: <%=formatted_date(@upload.created_at)%>
+		</div>
+		<div class="tagsContainer">
+			<%= raw @upload.tags.map(&:name).map { |t| link_to t, uploads_path(tag: t) }.join(' ') %>
+			<% if is_owner(@upload) || current_user.admin? %>
+				<span class="toggleTagEdit" title="Toggle Edit Tags">(Edit Tags)</span>
 			<% end %>
 		</div>
-	</div>
-<% end %>
-<div class="detailsContainer">
-	<div>
-		Uploaded by: <%= link_to @upload.user.username, uploads_path(user: @upload.user.username), title: "Go to #{@upload.user.username}'s uploads" %>
-	</div>
-	<div>
-		Uploaded on: <%=formatted_date(@upload.created_at)%>
-	</div>
-	<div class="tagsContainer">
-		<%= raw @upload.tags.map(&:name).map { |t| link_to t, uploads_path(tag: t) }.join(' ') %>
-		<% if is_owner(@upload) || current_user.admin? %>
-			<span class="toggleTagEdit" title="Toggle Edit Tags">(Edit Tags)</span>
+		<%= form_for @upload, url: {action: "update"} do |form| %>
+		    <%= form.text_field :tag_list, value: @upload.tag_list.to_s, placeholder: "Enter tags (use comma to separate)" %>
+		    <%= form.submit "Save" %>
 		<% end %>
 	</div>
-	<%= form_for @upload, url: {action: "update"} do |form| %>
-	    <%= form.text_field :tag_list, value: @upload.tag_list.to_s, placeholder: "Enter tags (use comma to separate)" %>
-	    <%= form.submit "Save" %>
-	<% end %>
 </div>
