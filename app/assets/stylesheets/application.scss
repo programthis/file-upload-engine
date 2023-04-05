@@ -38,10 +38,19 @@ footer {
 }
 
 .mainContainer {
-	width: 80%;
-	margin-left: 20%;
+	width: 100%;
+	.centralContainer {
+		width: 80%;
+		margin: 0 auto;
+	}
+	.uploadsContainer {
+		margin-left: 20%;
+	}
+	h2 {
+		font-size: 22px;
+		margin: 20px 0;
+	}
 	form {
-		padding: 0 20px;
 		margin-bottom: 10px;
 		text-align: left;
 		&.new_user {

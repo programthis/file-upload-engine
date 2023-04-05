@@ -1,56 +1,58 @@
-<% if @files.length > 0 %>
-	<% @files.each do |file| %>
-		<div class="fileContainer index" title="<% if is_video(file) || is_code(file) %><%= file.filename %> | <% end %>">
-			<%= link_to(single_upload_path(file.record, file_id: file), class: "fileContainerInner") do %>
-				<% if is_image(file) %>
-					<div class="imageContainer">
-						<%= image_tag file.variant(resize_to_limit: [300, 300]) %>
-					</div>
-				<% elsif is_video(file) %>
-					<div class="imageContainer">
-						<%= image_tag("video_icon.svg", alt: file.filename)  %>
-					</div>
-				<% elsif is_pdf(file) %>
-					<div class="iconContainer">
-						<%= image_tag("pdf_icon.svg") %>
-					</div>
-				<% elsif is_code(file) %>
-					<div class="iconContainer">
-						<%= image_tag("code_icon.svg") %>
+<div class="uploadsContainer">
+	<% if @files.length > 0 %>
+		<% @files.each do |file| %>
+			<div class="fileContainer index" title="<% if is_video(file) || is_code(file) %><%= file.filename %> | <% end %>">
+				<%= link_to(single_upload_path(file.record, file_id: file), class: "fileContainerInner") do %>
+					<% if is_image(file) %>
+						<div class="imageContainer">
+							<%= image_tag file.variant(resize_to_limit: [300, 300]) %>
+						</div>
+					<% elsif is_video(file) %>
+						<div class="imageContainer">
+							<%= image_tag("video_icon.svg", alt: file.filename)  %>
+						</div>
+					<% elsif is_pdf(file) %>
+						<div class="iconContainer">
+							<%= image_tag("pdf_icon.svg") %>
+						</div>
+					<% elsif is_code(file) %>
+						<div class="iconContainer">
+							<%= image_tag("code_icon.svg") %>
+						</div>
+					<% end %>
+				<% end %>
+				<div class="userProfileContainer">
+					<% if file.record.user && file.record.user.avatar.attached? %>
+						<%= link_to image_tag(file.record.user.avatar), uploads_path(user: file.record.user.username), title: "Go to #{file.record.user.username}'s uploads" %>
+					<% end %>
+					<% if file.record.user && !file.record.user.avatar.attached? %>
+						<%= link_to image_tag("avatar_icon.svg"), uploads_path(user: file.record.user.username), title: "Go to #{file.record.user.username}'s uploads" %>
+					<% end %>
+				</div>
+				<div class="downloadContainer">
+					<%= link_to image_tag("download_icon.svg"), rails_blob_path(file, disposition: "attachment"), title: "Download file" %>
+				</div>
+				<% if multiple_upload_files(file.record) %>
+					<div class="multiContainer" upload_id="<%= file.record.id %>">
+						<%= link_to image_tag("multi_icon.svg"), upload_path(file.record), title: "Go to multiple upload page" %>
 					</div>
 				<% end %>
-			<% end %>
-			<div class="userProfileContainer">
-				<% if file.record.user && file.record.user.avatar.attached? %>
-					<%= link_to image_tag(file.record.user.avatar), uploads_path(user: file.record.user.username), title: "Go to #{file.record.user.username}'s uploads" %>
-				<% end %>
-				<% if file.record.user && !file.record.user.avatar.attached? %>
-					<%= link_to image_tag("avatar_icon.svg"), uploads_path(user: file.record.user.username), title: "Go to #{file.record.user.username}'s uploads" %>
+				<% if is_owner(file.record) || current_user.admin? %>
+					<div class="removeContainer">
+						<%= link_to image_tag("trash_icon.svg"), delete_image_attachment_upload_url(id: file.id, upload_id: file.record.id), method: :delete,
+			                data: { confirm: 'Are you sure you wish to delete this?' }, title: "Delete file" %>
+					</div>
 				<% end %>
 			</div>
-			<div class="downloadContainer">
-				<%= link_to image_tag("download_icon.svg"), rails_blob_path(file, disposition: "attachment"), title: "Download file" %>
+		<% end %>
+		<%= link_to(new_upload_path, class: "newUploadContainer", title: "Click to add a new upload") do %>
+			<div class="newUploadInnerContent">
+				+
 			</div>
-			<% if multiple_upload_files(file.record) %>
-				<div class="multiContainer" upload_id="<%= file.record.id %>">
-					<%= link_to image_tag("multi_icon.svg"), upload_path(file.record), title: "Go to multiple upload page" %>
-				</div>
-			<% end %>
-			<% if is_owner(file.record) || current_user.admin? %>
-				<div class="removeContainer">
-					<%= link_to image_tag("trash_icon.svg"), delete_image_attachment_upload_url(id: file.id, upload_id: file.record.id), method: :delete,
-		                data: { confirm: 'Are you sure you wish to delete this?' }, title: "Delete file" %>
-				</div>
-			<% end %>
-		</div>
+		<% end %>
+		<%= will_paginate @files %>
+	<% else %>
+		No files found, <%= link_to('click here', new_upload_path) %> to upload one!
 	<% end %>
-	<%= link_to(new_upload_path, class: "newUploadContainer", title: "Click to add a new upload") do %>
-		<div class="newUploadInnerContent">
-			+
-		</div>
-	<% end %>
-	<%= will_paginate @files %>
-<% else %>
-	No files found, <%= link_to('click here', new_upload_path) %> to upload one!
-<% end %>
+</div>
 
