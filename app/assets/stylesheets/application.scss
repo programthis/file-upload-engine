@@ -130,6 +130,8 @@ table {
 	.mainContainer {
 		width: 100%;
 		text-align: center;
-		margin-left: 0;
+		.uploadsContainer {
+			margin-left: 0;
+		}
 	}
 }
