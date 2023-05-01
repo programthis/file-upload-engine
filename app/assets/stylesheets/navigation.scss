@@ -3,7 +3,9 @@
 
 nav {
 	@include flex-box;
-	padding: 20px;
+	padding: 10px 20px;
+	background-color: $primary-light-blue;
+	border-bottom: 5px solid darken($primary-light-blue, 10%);
 	.navbarLogo {
 		font-size: 20px;
 		font-weight: bold;

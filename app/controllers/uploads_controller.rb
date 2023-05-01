@@ -12,7 +12,7 @@ class UploadsController < ApplicationController
 		if params[:tag]
 			tag = params[:tag]
 		end
-		per_page = 25
+		per_page = 50
 		tag ? @uploads = Upload.tagged_with(tag).order("created_at desc").paginate(page: params[:page], per_page: per_page) : @uploads = Upload.all.order("created_at desc").paginate(page: params[:page], per_page: per_page)
 		tag ? @files = ActiveStorage::Attachment.where(record: Upload.tagged_with(tag)).order("created_at desc").paginate(page: params[:page], per_page: per_page) : @files = ActiveStorage::Attachment.where(record: Upload.all).order("created_at desc").paginate(page: params[:page], per_page: per_page)
 		if params[:date_range]
