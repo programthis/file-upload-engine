@@ -10,7 +10,9 @@
 	position: fixed;
 	left: 0;
 	z-index: 100;
-	background-color: $light-grey;
+	// background-color: $light-grey;
+	background: rgb(57,57,57);
+	background: linear-gradient(90deg, rgba(57,57,57,1) 0%, rgba(217,217,217,1) 0%, rgba(233,233,233,1) 48%);
 	.sidebarToggle {
 		@include animation-transition(0.1s);
 		position: absolute;
