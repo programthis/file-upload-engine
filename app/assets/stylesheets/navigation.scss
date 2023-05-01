@@ -42,8 +42,11 @@ nav {
 		width: 100%;
 		.mobileNavbarLogo {
 			text-align: center;
-			padding: 10px;
+			padding: 10px 10px 0 10px;
 			font-size: 20px;
+			&:hover {
+				background-color: $primary-light-blue;
+			}
 		}
 		.navbarMobileLinks {
 			display: none;
@@ -63,7 +66,7 @@ nav {
 			text-align: right;
 			padding: 5px;
 			&:hover {
-				background-color: silver;
+				background-color: darken($primary-light-blue, 10%);
 			}
 		}
 		.hamburger {
