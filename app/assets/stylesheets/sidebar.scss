@@ -41,6 +41,8 @@
 	}
 	.main {
 		padding-bottom: 10px;
+		padding-top: 10px;
+		border-top: 2px solid silver;
 	}
 	.tags {
 		border-top: 2px solid silver;
@@ -55,6 +57,8 @@
 		padding: 0 10px;
 	}
 	.searchForm {
+		text-align: center;
+		margin-bottom: 10px;
 		input {
 			@include border-box;
 			font-size: 16px;

@@ -1,12 +1,9 @@
 <div class="sidebar">
 	<div class="sidebarToggle" title="Click to toggle sidebar">
 	</div>
-	<div class="main">
-		<%= link_to "Today", uploads_path(date_range: "today") %>
-		<%= link_to "Last 7 days", uploads_path(date_range: "7_days") %>
-		<%= link_to "Last 30 days", uploads_path(date_range: "30_days") %>
-		<%= link_to "Last year", uploads_path(date_range: "last_year") %>
-	</div>
+	<%= form_for(uploads_path, method: :get, html: {class: "searchForm"}) do %>
+		<%= text_field_tag(:search, params[:search], placeholder: "Search by Tag", title: "More search terms coming soon") %>
+	<% end %>
 	<div class="tags">
 		<div class="heading">
 			Most popular tags
@@ -33,7 +30,10 @@
 			<% end %>
 		</div>
 	<% end %>
-	<%= form_for(uploads_path, method: :get, html: {class: "searchForm"}) do %>
-		<%= text_field_tag(:search, params[:search], placeholder: "Search by Tag", title: "More search terms coming soon") %>
-	<% end %>
+	<div class="main">
+		<%= link_to "Today", uploads_path(date_range: "today") %>
+		<%= link_to "Last 7 days", uploads_path(date_range: "7_days") %>
+		<%= link_to "Last 30 days", uploads_path(date_range: "30_days") %>
+		<%= link_to "Last year", uploads_path(date_range: "last_year") %>
+	</div>
 </div>
