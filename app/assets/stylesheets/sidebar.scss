@@ -6,7 +6,7 @@
 	@include border-box;
 	width: 20%;
 	height: 100vh;
-	padding: 20px;
+	padding: 20px 0;
 	position: fixed;
 	left: 0;
 	z-index: 100;
@@ -34,12 +34,9 @@
 		text-decoration: none;
 		display: inline-block;
 		width: 100%;
-		padding: 2.5px 5px;
+		padding: 2.5px 10px;
 		&:hover {
 			background-color: silver;
-		}
-		&.tag {
-			padding: 5px;
 		}
 	}
 	.main {
@@ -55,6 +52,7 @@
 	.heading {
 		font-style: italic;
 		margin-bottom: 5px;
+		padding: 0 10px;
 	}
 	.searchForm {
 		input {
