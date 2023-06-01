@@ -10,9 +10,9 @@
 	position: fixed;
 	left: 0;
 	z-index: 100;
-	// background-color: $light-grey;
-	background: rgb(57,57,57);
-	background: linear-gradient(90deg, rgba(57,57,57,1) 0%, rgba(217,217,217,1) 0%, rgba(233,233,233,1) 48%);
+	background-color: $primary-green-alt;
+	// background: rgb(57,57,57);
+	// background: linear-gradient(90deg, rgba(57,57,57,1) 0%, rgba(217,217,217,1) 0%, rgba(233,233,233,1) 48%);
 	.sidebarToggle {
 		@include animation-transition(0.1s);
 		position: absolute;
@@ -21,7 +21,7 @@
 		top: 0;
 		bottom: 0;
 		right: 0;
-		background-color: silver;
+		background-color: darken($primary-green-alt, 10%);
 		cursor: pointer;
 		&:hover {
 			background-color: #afafaf;
@@ -38,16 +38,16 @@
 		width: 100%;
 		padding: 2.5px 10px;
 		&:hover {
-			background-color: silver;
+			background-color: darken($primary-green-alt, 10%);
 		}
 	}
 	.main {
 		padding-bottom: 10px;
 		padding-top: 10px;
-		border-top: 2px solid silver;
+		border-top: 2px solid darken($primary-green-alt, 10%);
 	}
 	.tags {
-		border-top: 2px solid silver;
+		border-top: 2px solid darken($primary-green-alt, 10%);
 		padding-top: 10px;
 		&:not(:last-child) {
 			margin-bottom: 10px;

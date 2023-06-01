@@ -4,8 +4,9 @@
 nav {
 	@include flex-box;
 	padding: 10px 20px;
-	background-color: $primary-light-blue;
-	border-bottom: 5px solid darken($primary-light-blue, 10%);
+	border-bottom: 5px solid darken($primary-light-blue, 25%);
+	background: rgb(57,57,57);
+	background: linear-gradient(90deg, rgba(57,57,57,1) 0%, rgba(115,172,213,1) 0%, rgba(80,151,201,1) 69%);
 	.navbarLogo {
 		font-size: 20px;
 		font-weight: bold;
