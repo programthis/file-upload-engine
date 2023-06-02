@@ -6,9 +6,7 @@
 @import "./colours";
 
 .fileContainer {
-	// width: 10%;
-	width: calc(80% / 5);
-	height: 175px;
+	display: inline-block;
 	position: relative;
 	&:hover {
 		.downloadContainer, .multiContainer, .removeContainer {
@@ -65,10 +63,8 @@
 			}
 		}
 	}
-	.fileContainerInner, .imageContainer, .videoContainer, .iconContainer {
+	.fileContainerInner {
 		display: inline-block;
-		width: 100%;
-		height: 100%;
 	}
 	.originalImageContainer {
 		margin-bottom: 10px;
@@ -80,13 +76,12 @@
 			}
 		}
 	}
-	.imageContainer, .videoContainer, .iconContainer {
+	.imageContainer {
 		display: inline-block;
-		overflow: hidden;
 		font-size: 0;
 		img {
-			width: 100%;
-			height: 100%;
+			width: 175px;
+			height: 175px;
 			object-fit: cover;
 		}
 	}
