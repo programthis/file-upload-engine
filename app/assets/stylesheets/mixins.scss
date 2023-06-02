@@ -23,6 +23,16 @@
 	justify-content: center;
 }
 
+@mixin flex-box-with-wrap {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
 @mixin animation-transition($speed) {
 	-webkit-transition: all $speed ease; /* Safari and Chrome */
 	-moz-transition: all $speed ease; /* Firefox */
